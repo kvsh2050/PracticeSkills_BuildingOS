@@ -25,7 +25,7 @@ puts:
     or al, al           ; verify if next character is null?
     jz .done
 
-    mov ah, 0x0E        ; call bios interrupt
+    mov ah, 0x0E     ;0x0E        ; call bios interrupt
     mov bh, 0           ; set page number to 0
     int 0x10
 
@@ -37,6 +37,17 @@ puts:
     pop si    
     ret
     
+    
+    
+disp_heart:
+	;setup the data segments
+	
+	mov al , 0x03
+	mov ah, 0x0E
+	mov bh,0
+	int 0x10
+    	; i am not gonna do a loop , as it is not printing any string just display
+    	ret
 
 main:
     ; setup data segments
@@ -54,6 +65,8 @@ main:
     
     mov si, msg_done
     call puts
+    
+    call disp_heart
 
     hlt
 
