@@ -51,6 +51,9 @@ main:
     ; print hello world message
     mov si, msg_hello
     call puts
+    
+    mov si, msg_done
+    call puts
 
     hlt
 
@@ -59,8 +62,9 @@ main:
 
 
 
-msg_hello: db 'Hello world!', ENDL, 0
+msg_hello: db 'Hello world! Are you ready for it?', ENDL, 0
 
+msg_done: db "Hello, It's me Kavya: Welcome to the OS", ENDL, 0
 
 times 510-($-$$) db 0
 dw 0AA55h
